@@ -1,14 +1,12 @@
-name: Deploy Hello World
+name: Deploy Image
 
 on:
   push:
-    branches:
-      - master
     tags:
-      - "v*-hello-world"
+      - "v*"
   pull_request:
     branches:
-      - 'master'
+      - 'main'
 
 jobs:
   deploy-dockerghub:
