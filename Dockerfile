@@ -1,7 +1,7 @@
 FROM python:slim as base
 
 RUN pip install poetry
-RUN apt update && apt install build-essential -y
+RUN apt update && apt install -y build-essential libssl-dev
 RUN mkdir -p /tmp/build /tmp/wheel
 
 COPY poetry.lock /tmp/build
@@ -17,7 +17,10 @@ FROM python:slim
 
 COPY --from=base /tmp/wheel /tmp
 
-RUN pip install /tmp/*.whl && rm -rf /tmp
+RUN apt update && apt install -y curl jq    && \
+    rm -rf /var/lib/apt/lists               && \
+    pip install /tmp/*.whl                  && \
+    rm -rf /tmp
 
 USER nobody:nogroup
 

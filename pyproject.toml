@@ -31,7 +31,6 @@ python-openstackclient = "^6.0.0"
 python-keystoneclient = "^5.0.1"
 python-ironicclient = "^5.0.1"
 
-
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
